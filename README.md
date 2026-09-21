@@ -205,7 +205,7 @@ tool, not something the deployed app needs.
 
 ## 9. AI usage
 
-This project was built with Claude (Anthropic) as a pair-programming
+This project was built with Claude, Gemini AI, ChatGPT, and Copilot as a pair-programming
 assistant, used throughout the full stack:
 
 - **Planning:** discussing framework/database trade-offs before writing
