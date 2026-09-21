@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Events — IEEE ITB</title>
+  <meta name="description" content="Browse upcoming and past IEEE ITB Student Branch events." />
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="brand" href="/">
+        <span class="brand__mark">&#9670;</span>
+        <span class="brand__name">IEEE ITB Events</span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="/" class="is-active">Events</a>
+        <a href="/admin/login.html">Admin</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="page-heading">
+      <div>
+        <h1>Upcoming &amp; past events</h1>
+        <p>Everything happening at IEEE ITB Student Branch, in one place.</p>
+      </div>
+    </div>
+
+    <div class="toolbar">
+      <div class="search-field">
+        <label for="search-input" class="visually-hidden">Search events</label>
+        <input
+          type="search"
+          id="search-input"
+          placeholder="Search by title or location&hellip;"
+          autocomplete="off"
+        />
+      </div>
+      <div class="tab-group" id="status-tabs" role="tablist" aria-label="Filter by status">
+        <button type="button" data-status="" class="is-active" role="tab" aria-selected="true">All</button>
+        <button type="button" data-status="upcoming" role="tab" aria-selected="false">Upcoming</button>
+        <button type="button" data-status="ongoing" role="tab" aria-selected="false">Ongoing</button>
+        <button type="button" data-status="completed" role="tab" aria-selected="false">Completed</button>
+        <button type="button" data-status="cancelled" role="tab" aria-selected="false">Cancelled</button>
+      </div>
+    </div>
+
+    <div id="events-region" aria-live="polite">
+      <div class="event-grid" id="skeleton-grid"></div>
+    </div>
+
+    <nav class="pagination" id="pagination" hidden aria-label="Pagination"></nav>
+  </main>
+
+  <footer class="site-footer">
+    IEEE ITB Student Branch &middot; Event Management Platform
+  </footer>
+
+  <script src="/js/components.js"></script>
+  <script src="/js/api.js"></script>
+  <script src="/js/public-list.js"></script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin login — IEEE ITB Events</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  <div class="auth-shell">
+    <div class="auth-card">
+      <div class="brand">
+        <span class="brand__mark">&#9670;</span>
+        <span class="brand__name">IEEE ITB Events</span>
+      </div>
+      <h1 style="font-size:1.375rem;">Admin sign in</h1>
+      <p style="color: var(--ink-soft); font-size: 0.9rem; margin-bottom: 1.5rem;">
+        Manage the event calendar for IEEE ITB.
+      </p>
+
+      <div class="alert alert-error" id="form-alert" role="alert"></div>
+
+      <form id="login-form" novalidate>
+        <div class="form-field" data-field="username">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" autocomplete="username" required />
+          <div class="field-error"></div>
+        </div>
+        <div class="form-field" data-field="password">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" autocomplete="current-password" required />
+          <div class="field-error"></div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block" id="submit-btn">Sign in</button>
+      </form>
+
+      <p class="auth-hint">Public event listing is <a href="/">here</a>, no login needed.</p>
+    </div>
+  </div>
+
+  <script src="/js/components.js"></script>
+  <script src="/js/api.js"></script>
+  <script src="/js/admin-login.js"></script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin dashboard — IEEE ITB Events</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="brand" href="/admin/dashboard.html">
+        <span class="brand__mark">&#9670;</span>
+        <span class="brand__name">IEEE ITB Events &middot; Admin</span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <span id="admin-username" style="color:#d9d4c4; font-size:0.9rem;"></span>
+        <a href="/" target="_blank" rel="noopener">View public site</a>
+        <button type="button" class="btn btn-secondary btn-sm" id="logout-btn">Log out</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="page-heading">
+      <div>
+        <h1>Manage events</h1>
+        <p>Add, edit, or remove events shown on the public site.</p>
+      </div>
+      <button type="button" class="btn btn-primary" id="add-event-btn">+ Add event</button>
+    </div>
+
+    <div class="toolbar">
+      <div class="search-field">
+        <label for="search-input" class="visually-hidden">Search events</label>
+        <input type="search" id="search-input" placeholder="Search by title or location&hellip;" autocomplete="off" />
+      </div>
+      <div class="tab-group" id="status-tabs" role="tablist" aria-label="Filter by status">
+        <button type="button" data-status="" class="is-active" role="tab" aria-selected="true">All</button>
+        <button type="button" data-status="upcoming" role="tab" aria-selected="false">Upcoming</button>
+        <button type="button" data-status="ongoing" role="tab" aria-selected="false">Ongoing</button>
+        <button type="button" data-status="completed" role="tab" aria-selected="false">Completed</button>
+        <button type="button" data-status="cancelled" role="tab" aria-selected="false">Cancelled</button>
+      </div>
+    </div>
+
+    <div id="table-region" aria-live="polite"></div>
+    <nav class="pagination" id="pagination" hidden aria-label="Pagination"></nav>
+  </main>
+
+  <!-- Add / Edit event modal -->
+  <div class="modal-overlay" id="event-modal-overlay">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="event-modal-title" style="max-width: 560px;">
+      <h3 id="event-modal-title">Add event</h3>
+      <div class="alert alert-error" id="event-form-alert" role="alert"></div>
+      <form id="event-form" novalidate>
+        <input type="hidden" id="event-id" />
+        <div class="form-field" data-field="title">
+          <label for="title">Title</label>
+          <input type="text" id="title" name="title" required maxlength="150" />
+          <div class="field-error"></div>
+        </div>
+        <div class="form-field" data-field="description">
+          <label for="description">Description</label>
+          <textarea id="description" name="description" required maxlength="5000"></textarea>
+          <div class="field-error"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-field" data-field="event_date">
+            <label for="event_date">Date &amp; time</label>
+            <input type="datetime-local" id="event_date" name="event_date" required />
+            <div class="field-error"></div>
+          </div>
+          <div class="form-field" data-field="status">
+            <label for="status">Status</label>
+            <select id="status" name="status" required>
+              <option value="upcoming">Upcoming</option>
+              <option value="ongoing">Ongoing</option>
+              <option value="completed">Completed</option>
+              <option value="cancelled">Cancelled</option>
+            </select>
+            <div class="field-error"></div>
+          </div>
+        </div>
+        <div class="form-field" data-field="location">
+          <label for="location">Location</label>
+          <input type="text" id="location" name="location" required maxlength="200" />
+          <div class="field-error"></div>
+        </div>
+        <div class="form-field" data-field="image_url">
+          <label for="image_url">Image URL <span style="color:var(--ink-soft); font-weight:400;">(optional)</span></label>
+          <input type="url" id="image_url" name="image_url" placeholder="https://&hellip;" />
+          <div class="field-error"></div>
+        </div>
+        <div class="form-actions">
+          <button type="button" class="btn btn-secondary" id="cancel-form-btn">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="save-event-btn">Save event</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Delete confirmation modal -->
+  <div class="modal-overlay" id="confirm-modal-overlay">
+    <div class="modal" role="alertdialog" aria-modal="true" aria-labelledby="confirm-title">
+      <h3 id="confirm-title">Delete this event?</h3>
+      <p id="confirm-body">This can\u2019t be undone.</p>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-secondary" id="confirm-cancel-btn">Cancel</button>
+        <button type="button" class="btn btn-danger-solid" id="confirm-delete-btn">Delete event</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/components.js"></script>
+  <script src="/js/api.js"></script>
+  <script src="/js/admin-dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+{
+  "name": "ieee-itb-event-management",
+  "version": "1.0.0",
+  "description": "Lightweight event management platform (public site + admin dashboard) for IEEE ITB — Fullstack Developer probation task.",
+  "main": "server/server.js",
+  "type": "commonjs",
+  "engines": {
+    "node": ">=22.5.0"
+  },
+  "scripts": {
+    "start": "node server/server.js",
+    "dev": "node --watch server/server.js",
+    "test:e2e": "node tests/e2e.js"
+  },
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "playwright": "^1.56.0"
+  }
+}
